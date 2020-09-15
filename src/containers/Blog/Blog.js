@@ -9,7 +9,8 @@ import './Blog.css';
 class Blog extends Component {
     //setting state of posts to blank array which will fill when we send request to server.
     state = {
-        posts : []
+        posts : [],
+        selectedPostId: null
     }
 
     //  method used to send to server.
@@ -31,11 +32,19 @@ class Blog extends Component {
 
     }
 
+    postSelectedHandler = (id) => {
+        this.setState({selectedPostId: id});
+    }
+
 
     render () {
         //mapping posts to an array.
         const posts = this.state.posts.map(post => {
-            return <Post key={post.id} title={post.title} />;
+            return <Post 
+            key={post.id}
+             title={post.title}
+              author={post.author}
+              clicked={() => this.postSelectedHandler(post.id)} />;
 
 
         });
@@ -46,7 +55,7 @@ class Blog extends Component {
                    {posts}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost id={this.state.selectedPostId} />
                 </section>
                 <section>
                     <NewPost />
