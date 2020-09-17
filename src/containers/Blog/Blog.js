@@ -10,7 +10,8 @@ class Blog extends Component {
     //setting state of posts to blank array which will fill when we send request to server.
     state = {
         posts : [],
-        selectedPostId: null
+        selectedPostId: null,
+        error: false
     }
 
     //  method used to send to server.
@@ -28,6 +29,9 @@ class Blog extends Component {
                     //we set state once we fetch data.
                     this.setState({posts : updatedPosts});
                    // console.log(response);
+                })
+                .catch(error => {
+                    this.setState({error: true});
                 });
 
     }
@@ -38,8 +42,12 @@ class Blog extends Component {
 
 
     render () {
+        let posts = <p style={{textAlign:"center"}}> Something went wrong</p>
         //mapping posts to an array.
-        const posts = this.state.posts.map(post => {
+
+        if(!this.state.error) {
+
+        posts = this.state.posts.map(post => {
             return <Post 
             key={post.id}
              title={post.title}
@@ -48,6 +56,7 @@ class Blog extends Component {
 
 
         });
+    }
 
         return (
             <div>
