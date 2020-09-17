@@ -18,9 +18,7 @@ class NewPost extends Component {
              body : this.state.content,
              author : this.state.author,
          }
-
-
-
+            //axios post request pass url and data to send to server.
          axios.post('https://jsonplaceholder.typicode.com/posts', data)
                     .then(response => {
                         console.log(response);
