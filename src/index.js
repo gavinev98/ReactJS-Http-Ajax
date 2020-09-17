@@ -6,9 +6,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 import axios from 'axios';
 
-//setting a default base url if we are sending data to a specific location
-axios.defaults.baseURl = 'https://jsonplaceholder.typicode.com';
-
+//setting a default base url if we are sending data to a specific location/server.
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
 
 //validating requests globally.
 axios.interceptors.request.use(request => {
