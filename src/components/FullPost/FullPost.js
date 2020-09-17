@@ -13,13 +13,16 @@ class FullPost extends Component {
     //making http update
     componentDidUpdate () {
         if(this.props.id) {
+            //only fetch if a new ID is passed not the same one.
+            if(this.state.loadedPost && this.state.loadedPost.id !== this.props.id) {
             axios.get("https://jsonplaceholder.typicode.com/posts/" + this.props.id)
             .then(response => {
                 this.setState({loadedPost: response.data});
             })
         }
-       
     }
+       
+}
 
 
     render () {

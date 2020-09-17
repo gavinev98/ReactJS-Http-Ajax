@@ -1,0 +1,4 @@
+[0915/220732.686:ERROR:process_reader_win.cc(127)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0915/220732.902:ERROR:exception_snapshot_win.cc(100)] thread ID 27092 not found in process
+[0915/220733.111:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1a23d1bbd50 of 72 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[0915/220733.112:WARNING:pe_image_annotations_reader.cc(135)] could not read annotations list object in C:\Program Files (x86)\Microsoft\Edge\Application\85.0.564.51\msedge.dll
