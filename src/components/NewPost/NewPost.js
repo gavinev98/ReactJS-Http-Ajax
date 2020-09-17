@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './NewPost.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 class NewPost extends Component {
     state = {
@@ -13,7 +13,7 @@ class NewPost extends Component {
 
     postDataHandler = () => {
          //using axios posting data. posting a javascript object to server.
-         const post = {
+         const data = {
              title : this.state.title,
              body : this.state.content,
              author : this.state.author,
@@ -21,7 +21,10 @@ class NewPost extends Component {
 
 
 
-         axios.post('https://jsonplaceholder.typicode.com/posts', post)
+         axios.post('https://jsonplaceholder.typicode.com/posts', data)
+                    .then(response => {
+                        console.log(response);
+                    })
     }
 
     render () {
