@@ -17,7 +17,7 @@ class Blog extends Component {
     //  method used to send to server.
     componentDidMount () {
         //sending and we use 'then' method when asynch op has complete.
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('/posts')
                 .then(response => {
                     const posts = response.data.slice(0, 4);
                     const updatedPosts = posts.map(post => {

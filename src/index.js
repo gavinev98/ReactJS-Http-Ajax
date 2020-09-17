@@ -6,8 +6,11 @@ import registerServiceWorker from './registerServiceWorker';
 
 import axios from 'axios';
 
+//setting a default base url if we are sending data to a specific location
+axios.defaults.baseURl = 'https://jsonplaceholder.typicode.com';
 
-//seeing requests globally.
+
+//validating requests globally.
 axios.interceptors.request.use(request => {
     console.log(request);
     //you always need to return request or else you will block it.
@@ -19,7 +22,7 @@ axios.interceptors.request.use(request => {
 });
 
 
-//seeing reponses globablly.
+//validating reponses globablly.
 axios.interceptors.response.use(response => {
     console.log(response);
     //you always need to return request or else you will block it.
