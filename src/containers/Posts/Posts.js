@@ -1,9 +1,46 @@
 import React, {Component} from 'react';
 
+import axios from '../../axios';
 
+import Post from '../../components/Post/Post';
 
+import '../Posts/Posts.css';
 
 class Posts extends Component {
+
+        //setting state of posts to blank array which will fill when we send request to server.
+        state = {
+            posts : [],
+
+        }
+
+        //  method used to send to server.
+        componentDidMount () {
+        //sending and we use 'then' method when asynch op has complete.
+            axios.get('/posts')
+                .then(response => {
+                    const posts = response.data.slice(0, 4);
+                    const updatedPosts = posts.map(post => {
+                        return{
+                            ...post,
+                            author: 'Max'
+                        }
+                    })
+                    //we set state once we fetch data.
+                    this.setState({posts : updatedPosts});
+                   // console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                    //this.setState({error: true});
+                });
+
+    }
+
+
+        postSelectedHandler = (id) => {
+            this.setState({selectedPostId: id});
+        }
     
         render() {
             let posts = <p style={{textAlign:"center"}}> Something went wrong</p>
@@ -21,7 +58,7 @@ class Posts extends Component {
     
             });
         }
-        
+
             return (
                 <section className="Posts">
                     {posts}
@@ -29,3 +66,5 @@ class Posts extends Component {
             );
         }
 }
+
+export default Posts;
