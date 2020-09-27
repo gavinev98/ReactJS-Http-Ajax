@@ -16,6 +16,8 @@ class Posts extends Component {
 
         //  method used to send to server.
         componentDidMount () {
+
+            console.log(this.props);
         //sending and we use 'then' method when asynch op has complete.
             axios.get('/posts')
                 .then(response => {

@@ -10,6 +10,10 @@ class NewPost extends Component {
         author: 'Max'
     }
 
+    componentDidMount () {
+        console.log(this.props);
+    }
+
 
     postDataHandler = () => {
          //using axios posting data. posting a javascript object to server.
