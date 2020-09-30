@@ -25,7 +25,7 @@ class FullPost extends Component {
 
         if(this.props.match.params.id) {
             //only fetch if a new ID is passed not the same one.
-            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.match.params.id)) {
+            if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id != this.props.match.params.id)) {
             axios.get("/posts/" + this.props.match.params.id)
             .then(response => {
                 this.setState({loadedPost: response.data});
