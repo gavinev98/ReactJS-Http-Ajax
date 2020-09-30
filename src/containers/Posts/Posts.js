@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 
 import '../Posts/Posts.css';
 
+import { Route } from 'react-router-dom';
+
+import FullPost from '../Blog/FullPost/FullPost';
+
 class Posts extends Component {
 
         //setting state of posts to blank array which will fill when we send request to server.
@@ -43,7 +47,7 @@ class Posts extends Component {
 
 
         postSelectedHandler = (id) => {
-            this.props.history.push({pathname: '/' + id});
+            this.props.history.push('/posts/' + id);
         }
     
         render() {
@@ -53,7 +57,7 @@ class Posts extends Component {
             if(!this.state.error) {
     
             posts = this.state.posts.map(post => {
-                return (<Link to={'/' + post.id} key={post.id}> <Post 
+                return (<Link to={'/posts/' + post.id} key={post.id}> <Post 
                  title={post.title}
                   author={post.author}
                   clicked={() => this.postSelectedHandler(post.id)} /> </Link>
@@ -64,9 +68,14 @@ class Posts extends Component {
         }
 
             return (
-                <section className="Posts">
+                <div>
+                  <section className="Posts">
                     {posts}
                  </section>
+
+                 <Route path={this.props.match.url + "/:id"} exact component={FullPost} />
+                </div>
+
             );
         }
 }

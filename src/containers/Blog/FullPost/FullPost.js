@@ -13,6 +13,16 @@ class FullPost extends Component {
     //making http update
     componentDidMount () {
         console.log(this.props);
+            this.loadData();
+}
+
+    componentDidUpdate () {
+        this.loadData();
+    }
+
+
+    loadData() {
+
         if(this.props.match.params.id) {
             //only fetch if a new ID is passed not the same one.
             if(!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
@@ -21,8 +31,11 @@ class FullPost extends Component {
                 this.setState({loadedPost: response.data});
             })
         }
-    }      
-}
+    }   
+
+        
+
+    }
 
     deletePostHandler = () => {
         axios.delete("/posts/" + this.props.match.params.id)
